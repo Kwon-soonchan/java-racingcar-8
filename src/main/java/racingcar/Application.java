@@ -1,7 +1,5 @@
 package racingcar;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -12,11 +10,27 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉽표(,) 기준으로 구분)");
         String carNames = Console.readLine();
-        System.out.println("시도할 횟수는 몇 회인가요?");
-        int tryNumber = Integer.parseInt(Console.readLine());
-
         String[] carNameList = carNames.split(",");
         int[] countForward = new int[carNameList.length];
+
+        // 이름 검증 로직
+        for (String name : carNameList) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("자동차 이름은 5자 이하만 가능합니다.");
+            }
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException("자동차 이름은 공백일 수 없습니다.");
+            }
+        }
+
+        System.out.println("시도할 횟수는 몇 회인가요?");
+        int tryNumber;
+        // 시도 횟수 검증 로직
+        try {
+            tryNumber = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
+        }
 
         System.out.println("실행 결과");
         for (int i = 0; i < tryNumber; i++) {

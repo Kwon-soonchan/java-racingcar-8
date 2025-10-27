@@ -24,8 +24,8 @@
 ### 3. 출력 기능
 - [x] 출력 템플릿 만들기
 ### 4. 예외 처리
-- [ ] 자동차 이름에 숫자가 들어올 경우 IllegalArgumentException 발생시키기
-
+- [ ] 자동차 이름에 공백이 들어올 경우 IllegalArgumentException 발생시키기
+- [ ] 자동차의 이름이 5자를 초과하면 IllegalArgumentException 발생시키기
 ---
 
 ## <트러블슈팅>
